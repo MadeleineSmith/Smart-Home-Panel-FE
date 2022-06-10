@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
 import './App.css'
+import Slider from '@mui/material/Slider';
+
 
 class App extends Component {
     state = {
-        brightness: 1000,
-        colorTemperature: 1000,
+        brightness: 250,
+        colorTemperature: 500,
     }
 
     componentDidMount() {
@@ -41,21 +43,15 @@ class App extends Component {
                 <h2>Lounge - main bulb:</h2>
 
                 <form onSubmit={this.updateDevice}>
-                    <label>Brightness (10 -> 1000):</label>
-                    <input
-                        type="number"
-                        name="brightness"
-                        value={this.state.brightness}
-                        onChange={this.handleChange}
-                    />
+                    <label>Brightness:</label>
+                    <Slider aria-label="brightness" name="brightness" value={this.state.brightness}
+                            onChange={this.handleChange} min={10} max={1000} color="secondary"
+                            valueLabelDisplay="auto"/>
 
-                    <label>Color temperature (0 -> 1000):</label>
-                    <input
-                        type="number"
-                        name="colorTemperature"
-                        value={this.state.colorTemperature}
-                        onChange={this.handleChange}
-                    />
+
+                    <label>Color temperature:</label>
+                    <Slider aria-label="colorTemperature" name="colorTemperature" value={this.state.colorTemperature}
+                            onChange={this.handleChange} min={0} max={1000} valueLabelDisplay="auto"/>
 
                     <hr></hr>
 
