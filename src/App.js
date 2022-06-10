@@ -3,9 +3,8 @@ import './App.css'
 
 class App extends Component {
     state = {
-        text: '',
-        brightness: 255,
-        colorTemperature: 255,
+        brightness: 1000,
+        colorTemperature: 1000,
     }
 
     componentDidMount() {
@@ -28,16 +27,19 @@ class App extends Component {
     }
 
     handleChange = evt => {
-        this.setState({[evt.target.name]: evt.target.value})
+        this.setState({[evt.target.name]: parseInt(evt.target.value)})
     }
 
     render() {
         return (
             <div className="App">
-                <h1>Smart Bulbs</h1>
+                <h1>💡 Smart Home Panel 💡</h1>
+                <hr></hr>
+
+                <h2>Lounge - main bulb:</h2>
 
                 <form onSubmit={this.updateDevice}>
-                    <label>Brightness</label>
+                    <label>Brightness (10 -> 1000):</label>
                     <input
                         type="number"
                         name="brightness"
@@ -45,13 +47,15 @@ class App extends Component {
                         onChange={this.handleChange}
                     />
 
-                    <label>Color temperature</label>
+                    <label>Color temperature (0 -> 1000):</label>
                     <input
                         type="number"
                         name="colorTemperature"
                         value={this.state.colorTemperature}
                         onChange={this.handleChange}
                     />
+
+                    <hr></hr>
 
                     <button type="submit">Adjust settings!</button>
                 </form>
