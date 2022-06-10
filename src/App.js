@@ -13,7 +13,9 @@ class App extends Component {
     updateDevice = async evt => {
         evt.preventDefault()
 
-        await fetch('/devices/1', {
+        let apiURL = process.env.REACT_APP_API_URL
+
+        await fetch(`${apiURL}/devices/1`, {
             method: 'PATCH',
             headers: {
                 'Accept': 'application/json',
